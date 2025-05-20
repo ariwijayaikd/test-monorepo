@@ -28,7 +28,7 @@ jobs:
           go-version: '1.20'
 
       - name: Run Go tests
-        working-directory: ./go
+        # working-directory: ./go
         run: go test ./...
         
   build-go:
@@ -97,7 +97,7 @@ jobs:
           node-version: '18'
 
       - name: Run Node.js tests
-        working-directory: ./node
+        # working-directory: ./node
         run: |
           npm install
           npm test

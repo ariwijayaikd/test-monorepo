@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./go
-          file: ./go.Dockerfile
+          file: ./go/go.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}:${{ env.IMAGE_GO_TAG }} , ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}:${{ env.IMAGE_GO_TAG_LATEST }} ,
@@ -146,7 +146,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./node
-          file: ./node.Dockerfile
+          file: ./node/node.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}:${{ env.IMAGE_NODE_TAG }} , ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}:${{ env.IMAGE_NODE_TAG_LATEST }} ,

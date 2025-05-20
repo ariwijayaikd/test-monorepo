@@ -1,5 +1,7 @@
-name: build test monorepo
+name: workflows test-monorepo
 on:
+  pull_request:
+    branches: [ main ]
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -19,8 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        # with:
-        #   path: go/
 
       - name: Setup Go
         uses: actions/setup-go@v4
@@ -87,8 +87,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        # with:
-        #   path: node/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

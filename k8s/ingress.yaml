@@ -2,23 +2,31 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: monorepo-ingress
+  namespace: monorepo
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - ariwijayaikd.me
+      secretName: monorepo-tls
   rules:
-    - http:
+    - host: ariwijayaikd.me
+      http:
         paths:
-          - path: /go
+          - path: /go(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: go-monorepo
+                name: monorepo-service
                 port:
-                  number: 80
-          - path: /node
+                  number: 8080
+          - path: /node(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: node-monorepo
+                name: monorepo-service
                 port:
-                  number: 80
+                  number: 3000

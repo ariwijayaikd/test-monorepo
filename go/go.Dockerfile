@@ -17,6 +17,7 @@ RUN go mod download
 RUN go mod verify
 
 COPY main.go ./
+COPY .env ./
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o go .
 
@@ -31,6 +32,7 @@ ENV TZ=Asia/Jakarta
 WORKDIR /app/
 
 COPY --from=builder /app/go .
+COPY --from=builder /app/.env .
 
 EXPOSE 8080
 

@@ -44,6 +44,10 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Export as env
+        run: |
+          echo "VERSION=${{ env.IMAGE_GO_TAG }}" >> ./go/.env
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 

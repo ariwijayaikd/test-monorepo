@@ -21,7 +21,7 @@ func GoHandler(w http.ResponseWriter, r *http.Request) {
 	if version == "" {
 		version = "unknown"
 	}
-	fmt.Fprintf(w, "Hello, World! This is a test response from the Go server.\nImage Version: %s\n", version)
+	fmt.Fprintf(w, "Hello, World! This is a test response from the Go server.\nImage Tag: %s\n", version)
 }
 
 func main() {

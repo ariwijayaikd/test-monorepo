@@ -16,14 +16,14 @@ spec:
     - host: ariwijayaikd.me
       http:
         paths:
-          - path: /go(/|$)(.*)
+          - path: /monorepo/go(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: monorepo-service
                 port:
                   number: 8080
-          - path: /node(/|$)(.*)
+          - path: /monorepo/node(/|$)(.*)
             pathType: Prefix
             backend:
               service:

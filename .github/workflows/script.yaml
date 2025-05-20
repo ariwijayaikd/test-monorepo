@@ -172,7 +172,10 @@ jobs:
         gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER }} --region ${{ secrets.GKE_REGION }}
 
     - name: Apply Kubernetes manifests
+      working-directory: ${{ github.workspace }}
       run: |
+        ls -R
+        ls -R k8s/
         kubectl apply -f k8s/namespace.yaml
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml

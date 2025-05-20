@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-monorepo
+spec:
+  selector:
+    app: go-monorepo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

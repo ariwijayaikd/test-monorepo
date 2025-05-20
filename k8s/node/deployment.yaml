@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-monorepo
+  labels:
+    app: node-monorepo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-monorepo
+  template:
+    metadata:
+      labels:
+        app: node-monorepo
+    spec:
+      containers:
+        - name: node-monorepo
+          image: ghcr.io/ariwijayaikd/test-monorepo:node-latest
+          ports:
+            - containerPort: 3000

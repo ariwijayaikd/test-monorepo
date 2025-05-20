@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: DockerHub
+  REGISTRY: ariwijayaikd
   IMAGE_NAME: test-monorepo
   IMAGE_GO_TAG: go-v1.0.${{ github.run_number }}
   IMAGE_GO_TAG_LATEST: go-latest
@@ -71,7 +71,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}
 
-      - name: Build push ${{ env.REGISTRY_GH }} and ${{ env.REGISTRY }}
+      - name: Build push ${{ env.REGISTRY_GH }} and Docker Hub
         id: build
         uses: docker/build-push-action@v5
         with:
@@ -139,7 +139,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY_GH }}/${{ env.IMAGE_NAME_GH }}
 
-      - name: Build push ${{ env.REGISTRY_GH }} and ${{ env.REGISTRY }}
+      - name: Build push ${{ env.REGISTRY_GH }} and Docker Hub
         id: build
         uses: docker/build-push-action@v5
         with:
